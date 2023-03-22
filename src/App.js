@@ -1,9 +1,9 @@
 import './App.css';
+import { useState } from 'react';
 
 // 사용자 정의 태그 = 컴포넌트 
 // 반드시 대문자로 시작!
 const Header = (props) => {
-  console.log(props)
   return <header>
     <h1><a href="/" onClick={(event) => {
       event.preventDefault();
@@ -20,15 +20,15 @@ const Nav = (props) => {
     lis.push(<li key={t.id}>
         <a id={t.id} href={'/read/'+t.id} onClick={(event) => {
           event.preventDefault();
-          props.onChangeMode(event.target.id);
+          props.onChangeMode(Number(event.target.id));
         }}>{t.title}</a>
       </li>)
   }
   return <nav>
-  <ol>
-    {lis}
-  </ol>
-</nav>
+    <ol>
+      {lis}
+    </ol>
+  </nav>
 }
 
 const Article = (props) => {
@@ -40,20 +40,40 @@ const Article = (props) => {
 
 
 function App() {
+  const [mode, setMode] = useState('Welcome');
+  const [id, setId] = useState(null);
   const topics = [
     {id:1, title: 'html', body: 'html is ...'},
     {id:2, title: 'css', body: 'css is ...'},
     {id:3, title: 'javascript', body: 'javascript is ...'}
   ]
+
+  let content = null;
+  if(mode === 'Welcome') {
+    content = <Article title="Welcome" body="Hello, WEB"></Article>
+  } else if(mode === 'Read') {
+    let title, body = null;
+    for(let i = 0; i < topics.length; i++) {
+      console.log(topics[i].id, id);
+      if(topics[i].id === id){
+        title = topics[i].title;
+        body = topics[i].body;
+        break;
+      }
+    }
+    content = <Article title={title} body={body}></Article>
+  }
+
   return (
     <div>
-      <Header title="REACT" onChangeMode={() => {
-        alert('Header');
+      <Header title="Web" onChangeMode={() => {
+        setMode('Welcome');
       }}></Header>
-      <Nav topics={topics} onChangeMode={(id) => {
-        alert(id);
+      <Nav topics={topics} onChangeMode={(_id) => {
+        setMode('Read');
+        setId(_id);
       }}></Nav>
-      <Article title="welcome" body="Hello, WEB"></Article>
+      {content}
     </div>
   );
 }
