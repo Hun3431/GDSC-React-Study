@@ -1,4 +1,3 @@
-
 import './App.css';
 import { useState } from 'react';
 
@@ -43,14 +42,12 @@ const Create = (props) => {
   return <article>
     <h2>Create</h2>
     <form onSubmit={event => {
-      console.log('form태그 실행')
       event.preventDefault();
-      console.log(event.target.title.value)
       const title = event.target.title.value;
       const body = event.target.body.value;
       props.onCreate(title, body);
     }}>
-      <p><input type="text" name="title" placeholder="title" /></p>
+      <p><input type="text" name="title" placeholder="title"/></p>
       <p><textarea name="body" placeholder="body"></textarea></p>
       <p><input type="submit" value="Create"></input></p>
     </form>
@@ -64,7 +61,6 @@ const Update = (props) => {
     <h2>Update</h2>
     <form onSubmit={event => {
       event.preventDefault();
-      console.log(event.target.title.value)
       const title = event.target.title.value;
       const body = event.target.body.value;
       props.onUpdate(title, body);
@@ -80,7 +76,7 @@ const Update = (props) => {
   </article>
 }
 
-function App() {
+const App = () => {
   const [mode, setMode] = useState('WELCOME');
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
@@ -127,7 +123,6 @@ function App() {
       }
     }
     content = <Update title={title} body={body} onUpdate={(_title, _body) => {
-      console.log(_title +_body);
       const newTopics = [...topics]
       const updatedTopic = {id:id, title:_title, body:_body};
       for(let i = 0; i < newTopics.length; i ++) {
