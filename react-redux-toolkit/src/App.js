@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import store from './store';
 import { up } from './counterSlice';
+import { down } from './counterSlice';
 
 const Counter = () => {
   const dispatch = useDispatch();
@@ -14,12 +15,19 @@ const Counter = () => {
     <div>
       <button
         onClick={() => {
+          dispatch(down(2));
+        }}
+      >
+        -
+      </button>
+      {count}
+      <button
+        onClick={() => {
           dispatch(up(2));
         }}
       >
         +
       </button>{' '}
-      {count}
     </div>
   );
 }
