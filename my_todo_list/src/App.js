@@ -122,17 +122,19 @@ function App() {
     { id: 2, content: "test2", check: true },
     { id: 3, content: "test3", check: false },
   ]);
+
   const changeCheck = (id) => {
     const newtopics = [];
     for (let i = 0; i < topics.length; i++) {
       let temptopic = topics[i];
-      if (temptopic.id === id) {
+      if (temptopic.id == id) {
         temptopic.check = !temptopic.check;
       }
       newtopics.push(temptopic);
     }
     setTopics(newtopics);
   };
+
   return (
     <StyledApp className="App">
       <Title />
