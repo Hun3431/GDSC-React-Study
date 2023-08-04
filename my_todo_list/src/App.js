@@ -30,7 +30,7 @@ const StyledItem = styled.div`
   color: black;
 
   ${(props) =>
-    props.checked &&
+    props.check &&
     css`
       color: white;
       background: black;
@@ -59,14 +59,24 @@ const StyledDelete = styled.button`
   background: none;
   font-size: 20px;
   margin-top: 5px;
+
+  color: black;
+
   &:hover {
     color: red;
   }
+
+  ${(props) =>
+    props.check &&
+    css`
+      color: white;
+      background: black;
+    `};
 `;
 
-const ItemDelete = () => {
+const ItemDelete = (props) => {
   return (
-    <StyledDelete>
+    <StyledDelete check={props.check}>
       <FaRegCircleXmark className="delete" size={30} />
     </StyledDelete>
   );
@@ -87,10 +97,10 @@ const Item = (props) => {
       onClick={(event) => {
         props.changeCheck(event.target.id);
       }}
-      checked={props.topic.check}
+      check={props.topic.check}
     >
       <span>{props.topic.content}</span>
-      <ItemDelete />
+      <ItemDelete check={props.topic.check} />
     </StyledItem>
   );
 };
