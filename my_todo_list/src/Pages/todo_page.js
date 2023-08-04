@@ -8,6 +8,7 @@ const Todo = () => {
     { id: 2, content: "test2", check: true },
     { id: 3, content: "test3", check: false },
   ]);
+  const [nextId, setNextId] = useState(4);
 
   const changeCheck = (id) => {
     const newTopics = [];
@@ -21,11 +22,18 @@ const Todo = () => {
     setTopics(newTopics);
   };
 
-  const updateTodo = (content) => {};
+  const createTodo = (content) => {
+    console.log(content);
+    const newTopic = { id: nextId, content, check: false };
+    const tempTopic = [...topics];
+    tempTopic.push(newTopic);
+    setTopics(tempTopic);
+    setNextId(nextId + 1);
+  };
 
   return (
     <>
-      <ItemInput />
+      <ItemInput createTodo={createTodo} />
       <ItemList topics={topics} changeCheck={changeCheck} />
     </>
   );
