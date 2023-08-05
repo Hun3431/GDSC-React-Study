@@ -8,6 +8,8 @@ const StyledApp = styled.div`
     font-weight: normal;
     font-style: normal;
   }
+  
+  width: 100%;
 
   display: flex;
   flex-direction: column;
