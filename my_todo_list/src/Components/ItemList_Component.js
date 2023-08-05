@@ -3,11 +3,15 @@ import { StyledList } from "../Styles/StyledList";
 
 const ItemList = (props) => {
   const lis = [];
-  for (let i = 0; i < props.topics.length; i++) {
-    let topic = props.topics[i];
+  for (let i = 0; i < props.contents.length; i++) {
+    let content = props.contents[i];
     lis.push(
-      <li key={topic.id}>
-        <Item topic={topic} changeCheck={props.changeCheck} />
+      <li key={content.id}>
+        <Item
+          content={content}
+          changeCheck={props.changeCheck}
+          deleteTodo={props.deleteTodo}
+        />
       </li>
     );
   }

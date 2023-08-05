@@ -3,9 +3,18 @@ import { FaRegCircleXmark } from "react-icons/fa6";
 
 const ItemDelete = (props) => {
   return (
-    <StyledDelete check={props.check}>
-      <FaRegCircleXmark className="delete" size={30} />
-    </StyledDelete>
+    <div>
+      <StyledDelete
+        type="button"
+        check={props.check}
+        onClick={(event) => {
+          event.stopPropagation();
+          props.deleteTodo(props.id);
+        }}
+      >
+        <FaRegCircleXmark className="delete" size={30} />
+      </StyledDelete>
+    </div>
   );
 };
 

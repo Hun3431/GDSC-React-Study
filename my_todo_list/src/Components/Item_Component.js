@@ -4,14 +4,19 @@ import { ItemDelete } from "./ItemDelete_Component";
 const Item = (props) => {
   return (
     <StyledItem
-      id={props.topic.id}
+      id={props.content.id}
       onClick={(event) => {
+        event.stopPropagation();
         props.changeCheck(event.target.id);
       }}
-      check={props.topic.check}
+      check={props.content.check}
     >
-      <span>{props.topic.content}</span>
-      <ItemDelete check={props.topic.check} />
+      <span>{props.content.content}</span>
+      <ItemDelete
+        id={props.content.id}
+        check={props.content.check}
+        deleteTodo={props.deleteTodo}
+      />
     </StyledItem>
   );
 };
