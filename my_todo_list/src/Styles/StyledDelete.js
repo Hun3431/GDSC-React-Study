@@ -6,17 +6,16 @@ const StyledDelete = styled.button`
   font-size: 20px;
   margin-top: 5px;
 
-  color: black;
+  color: #dee9f7;
 
   &:hover {
-    color: red;
+    color: #ff4a56;
   }
 
   ${(props) =>
     props.check &&
     css`
-      color: white;
-      background: black;
+      color: #dee9f7;
     `};
 `;
 

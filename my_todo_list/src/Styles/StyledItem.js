@@ -7,7 +7,6 @@ const StyledItem = styled.div`
   margin: 10px;
   padding: 10px 15px 10px 20px;
 
-  border: 3px solid darkgray;
   border-radius: 20px;
 
   display: flex;
@@ -16,16 +15,16 @@ const StyledItem = styled.div`
 
   font-size: 20px;
 
-  background: lightgray;
-  color: black;
+  background: #6e8eb9;
+  color: #dee9f7;
 
   cursor: default;
 
   ${(props) =>
     props.check &&
     css`
-      color: white;
-      background: black;
+      color: #dee9f7;
+      background: #9aa1ab;
     `};
 `;
 
