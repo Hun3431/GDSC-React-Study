@@ -9,7 +9,7 @@ const ItemList = (props) => {
       <li key={content.id}>
         <Item
           content={content}
-          changeCheck={props.changeCheck}
+          updateTodo={props.updateTodo}
           deleteTodo={props.deleteTodo}
         />
       </li>

@@ -7,7 +7,7 @@ const Item = (props) => {
       id={props.content.id}
       onClick={(event) => {
         event.stopPropagation();
-        props.changeCheck(event.target.id);
+        props.updateTodo(event.target.id);
       }}
       check={props.content.check}
     >

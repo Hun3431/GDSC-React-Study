@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ItemList } from "../Components/ItemList_Component";
 import { ItemInput } from "../Components/ItemInput_Component";
 
@@ -12,11 +12,7 @@ const Todo = () => {
   ]);
   const [nextId, setNextId] = useState(4);
 
-  // useEffect(() => {
-  //   console.log("Contents updated:", contents);
-  // }, [contents]);
-
-  const changeCheck = (id) => {
+  const updateTodo = (id) => {
     const newContents = [];
     for (let i = 0; i < contents.length; i++) {
       let tempContent = contents[i];
@@ -29,7 +25,6 @@ const Todo = () => {
   };
 
   const createTodo = (content) => {
-    console.log(content);
     const newContent = { id: nextId, content, check: false };
     const tempContent = [...contents];
     tempContent.push(newContent);
@@ -58,7 +53,7 @@ const Todo = () => {
       <ItemInput createTodo={createTodo} />
       <ItemList
         contents={contents}
-        changeCheck={changeCheck}
+        updateTodo={updateTodo}
         deleteTodo={deleteTodo}
       />
     </>
