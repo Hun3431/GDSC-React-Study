@@ -13,7 +13,10 @@ const ItemInput = (props) => {
           setContent(event.target.value);
         }}
         onKeyPress={(event) => {
-          if (event.key === "Enter") props.createTodo(content);
+          if (event.key === "Enter") {
+            props.createTodo(content);
+            event.target.value = "";
+          }
         }}
       />
     </StyledItem>
