@@ -1,12 +1,14 @@
-import { Todo } from "./Pages/todo_page";
-import { Title } from "./Components/Title_Component";
 import { StyledApp } from "./Styles/StyledApp";
+import { Header } from "./layout/Headers_layout";
+import { Body } from "./layout/Body_layout";
+import { Footer } from "./layout/Footer_layout";
 
 function App() {
   return (
     <StyledApp className="App">
-      <Title />
-      <Todo />
+      <Header />
+      <Body />
+      <Footer />
     </StyledApp>
   );
 }
