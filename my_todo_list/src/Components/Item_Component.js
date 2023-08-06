@@ -11,7 +11,7 @@ const Item = (props) => {
       }}
       check={props.content.check}
     >
-      <span>{props.content.content}</span>
+      {props.content.content}
       <ItemDelete
         id={props.content.id}
         check={props.content.check}
